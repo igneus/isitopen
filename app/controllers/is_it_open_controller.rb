@@ -1,6 +1,9 @@
 class IsItOpenController < ApplicationController
 
   def main
-    @open = OpeningTime.instance.open? Time.now
+    ot = OpeningTime.instance
+    @now = Time.now
+    @open = ot.open? @now
+    @times_today = ot.opening_time_on @now
   end
 end

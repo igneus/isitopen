@@ -1,1 +1,10 @@
-<%= @open ? 'YES' : 'NO' %>
+<h1>Is it open at Koupaliště Petynka?</h1>
+
+<div class="yesno-box <%= @open ? 'yes' : 'no' %>">
+  <%= @open ? 'YES' : 'NO' %>
+</div>
+
+<p>
+  Opening time today: 
+  <%= @times_today.begin =%>:00 - <%= @times_today.end =%>:00
+</p>

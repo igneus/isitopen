@@ -1,3 +1,9 @@
-// Place all the styles related to the IsItOpen controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.yesno-box {
+    border: 1px dotted #ccc; border-radius: 10px;
+    text-align: center;
+    margin: 50px auto 50px auto; padding: 50px;
+    font-size: 7em;
+
+    &.yes { background-color: #6f6; }
+    &.no { background-color: #f66; }
+}
