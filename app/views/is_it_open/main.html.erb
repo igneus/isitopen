@@ -4,6 +4,17 @@
   <%= @open ? 'YES' : 'NO' %>
 </div>
 
+<% if @show_downvote then %>
+  <%= link_to 'No, it is closed.', 
+        {:controller => "votes", :action => "create", :open => false}, 
+        {:method => 'post'} %>
+<% end %>
+<% if @show_upvote then %>
+  <%= link_to 'It IS open.', 
+        {:controller => "votes", :action => "create", :open => true}, 
+        {:method => 'post'} %>
+<% end %>
+
 <p>
   Opening time today: 
   <%= @times_today.begin =%>:00 - <%= @times_today.end =%>:00

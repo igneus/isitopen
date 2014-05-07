@@ -1,0 +1,9 @@
+.flash {
+    border: solid black 2px;
+    border-radius: 5px;
+    background-color: #ccc;
+    padding: 5px;
+
+    &.alert { border-color: red; }
+    &.notice { border-color: blue; }
+}
