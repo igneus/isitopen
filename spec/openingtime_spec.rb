@@ -73,6 +73,11 @@ describe OpeningTime do
         @ot.open?(t).should be_false
       end
 
+      it 'is open after nine on July Saturday' do
+        t = Time.new 2014, 7, 19, 9
+        @ot.open?(t).should be_true
+      end
+
       it 'is closed before nine on July Sunday' do
         t = Time.new 2014, 7, 20, 8
         t.sunday?.should be_true # make sure
@@ -84,6 +89,25 @@ describe OpeningTime do
         t.monday?.should be_true # make sure
         @ot.open?(t).should be_true
       end
+    end
+  end
+
+  describe '#opening_time_for' do
+
+    it 'returns range of hours' do
+      t = Time.new 2014, 7, 21, 8
+      @ot.opening_time_on(t).should be_a Range
+    end
+
+    it 'returns nil for a non-opening day' do
+      t = Time.new 2014, 1, 1, 8
+      @ot.opening_time_on(t).should === nil
+    end
+
+    it 'returns nil for a non-opening Sunday' do
+      t = Time.new 2014, 1, 5, 8
+      t.sunday?.should be_true
+      @ot.opening_time_on(t).should === nil
     end
   end
 end

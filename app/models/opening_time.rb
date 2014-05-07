@@ -17,6 +17,8 @@ class OpeningTime < Model
                 8 => {1..15 => 7...21, 16..31 => 7...20},
                 9 => 8...18}
     end
+
+    @weekend_open = 9
   end
 
   attr_writer :times
@@ -24,12 +26,15 @@ class OpeningTime < Model
   def open?(time)
     unless @times.has_key? time.month
       return false
-    end
+    end    
 
-    if weekend?(time) then
-      return false
-    end
+    return opening_time_on(time).include? time.hour
+  end
 
+  # day - Time
+  # returns opening time for the given day as range of hours
+  def opening_time_on(day)
+    time = day
     hours = nil
     month_times = @times[time.month]
     if month_times.is_a? Hash then
@@ -43,7 +48,11 @@ class OpeningTime < Model
       hours = month_times
     end
 
-    return hours.include? time.hour
+    if weekend?(time) and hours != nil and hours.begin < @weekend_open then
+      hours = (@weekend_open...hours.end)
+    end
+
+    return hours
   end
 
   private
