@@ -7,9 +7,10 @@ class IsItOpenController < ApplicationController
     @times_today = ot.opening_time_on @now
 
     downvotes = nil # are there any?
-    before_closing = (@now.hour < @times_today.end)
-    @show_downvote = before_closing && @open
-    @show_upvote = before_closing && (!@open || downvotes)
+    opening_time = (@now.hour >= @times_today.begin && 
+                    @now.hour < @times_today.end)
+    @show_downvote = opening_time && @open
+    @show_upvote = opening_time && (!@open || downvotes)
 
     ## for testing:
     #@show_downvote = @show_upvote = true
