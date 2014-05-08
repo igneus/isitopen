@@ -11,6 +11,10 @@ class VotesController < ApplicationController
   def create
     @vote = Vote.new(vote_params)
 
+    if current_user then
+      @vote.user = current_user
+    end
+
     if @vote.save
       redirect_to root_url, notice: 'Vote was successfully created.'
     else

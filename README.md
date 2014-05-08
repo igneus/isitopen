@@ -9,6 +9,9 @@ Tell others when you find it closed.
 
 ## Configuration
 
+* rename config/app_secret.example.yml to config/app_secret.yml and fill in
+  real secrets
+
 ## Database creation
 
 ## Database initialization

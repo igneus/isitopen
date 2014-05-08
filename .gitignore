@@ -17,3 +17,6 @@
 
 # Ignore all backups
 *~
+
+# Ignore configs containing secrets
+/config/app_secret.yml
