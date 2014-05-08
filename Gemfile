@@ -20,8 +20,9 @@ gem 'omniauth-facebook', '1.4.0'
 
 gem "econfig", require: "econfig/rails"
 
-gem 'capistrano', group: :development
-
 group :development do
   gem 'rspec-rails'
+  gem 'capistrano'
+  gem 'capistrano-rails', '~> 1.1'
+  gem 'rvm1-capistrano3'
 end
