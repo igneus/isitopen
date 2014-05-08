@@ -24,7 +24,8 @@ class IsItOpenController < ApplicationController
     @last_vote_from_trusted_user = @votes_today.find do |v| 
       v.user && (v.user.staff || v.user.trusted)
     end
-    @trusted_users_report_closed = (@last_vote_from_trusted_user.open == false)
+    @trusted_users_report_closed = ((@last_vote_from_trusted_user != nil) && 
+                                    (@last_vote_from_trusted_user.open == false))
 
     if @open then
       @open = @open && !@trusted_users_report_closed
