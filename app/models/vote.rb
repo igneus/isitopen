@@ -1,6 +1,4 @@
 class Vote < ActiveRecord::Base
 
-  # user - User
-  # open - Boolean
-  # created_at
+  belongs_to :user
 end
