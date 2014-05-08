@@ -26,5 +26,9 @@ group :development do
   gem 'rspec-rails'
   gem 'capistrano'
   gem 'capistrano-rails', '~> 1.1'
+
+  # This gem is very useful for deployment, but has funny side-effects:
+  # for unknown reasons, it causes rails crash when executing
+  # commands like 'rails s'; it helps to comment it out
   gem 'rvm1-capistrano3'
 end
