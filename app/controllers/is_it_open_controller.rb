@@ -31,6 +31,12 @@ class IsItOpenController < ApplicationController
     end
   end
 
+  def privacy
+  end
+
+  def about
+  end
+
   private
 
   def time_today(args)

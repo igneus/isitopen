@@ -10,4 +10,8 @@
 
 #header { text-align: right; }
 
-#footer { text-align: center; }
+#footer { 
+    margin-top: 50px; 
+    border-top: 1px solid #ccc;
+    .links { text-align: center; }
+}
