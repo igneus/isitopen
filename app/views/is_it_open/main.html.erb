@@ -1,4 +1,4 @@
-<h1><%= Isitopen.site_name %></h1>
+<h1>Is <%= link_to Isitopen.entreprise_name, Isitopen.opening_time_source_url %> open?</h1>
 
 <div class="yesno-box <%= @open ? 'yes' : 'no' %>">
   <%= @open ? 'YES' : 'NO' %>

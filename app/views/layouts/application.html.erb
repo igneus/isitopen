@@ -30,7 +30,7 @@
 <%= yield %>
 
 <div id="footer">
-  <p><strong>Disclaimer:</strong> <%= Isitopen.disclaimer %></p>
+  <p><strong>Disclaimer:</strong> <%= Isitopen.disclaimer.html_safe %></p>
 
   <div class="links">
     <%= link_to 'Privacy policy', 'privacy' %>
