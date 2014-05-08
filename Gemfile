@@ -1,3 +1,5 @@
+ruby '2.1.1'
+
 source 'https://rubygems.org'
 
 # Rails default gems
