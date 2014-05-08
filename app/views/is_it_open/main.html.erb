@@ -4,20 +4,23 @@
   <%= @open ? 'YES' : 'NO' %>
 </div>
 
-<div id="buttons">
-  <p>Click to let us know:</p>
-<% if @show_downvote then %>
-  <%= link_to 'No, it is closed.', 
+<% if @is_opening_time then %>
+  <div id="buttons">
+    <p>Click to let us know:</p>
+    <% if @show_downvote then %>
+      <%= link_to 'It is closed.', 
         {:controller => "votes", :action => "create", :open => false}, 
         {:method => 'post', :class => 'no'} %>
-<% end %>
+    <% end %>
+      
 
-<% if @show_upvote then %>
-  <%= link_to 'It IS open.', 
+    <% if @show_upvote then %>
+      <%= link_to 'It is open.', 
         {:controller => "votes", :action => "create", :open => true}, 
         {:method => 'post', :class => 'yes'} %>
+      <% end %>
+  </div>
 <% end %>
-</div>
 
 <div id="explanation">
 <h2>Explanation</h2>
@@ -43,7 +46,7 @@
     </p>
   <% end %>
 
-  <% if @downvotes %>
+  <% if @downvotes.size > 0 %>
     <p class="no">
       We have some reports stating it is closed.
       See the log of submitted votes below.
