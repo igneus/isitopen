@@ -7,11 +7,14 @@ set :branch, 'master'
 
 # set :linked_files, %w{config/database.yml}
 set :linked_dirs, [
-  'db', # where the sqlite db is stored
   'log',
   'tmp'
 ]
-set :linked_files, %w{config/app.yml config/initializers/secret_token.rb}
+set :linked_files, %w{
+config/app.yml 
+config/initializers/secret_token.rb
+db/production.sqlite3
+}
 
 namespace :deploy do
 
