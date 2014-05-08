@@ -31,5 +31,5 @@ set :deploy_to, '/var/www/petynka'
 
 # RVM
 # set :rvm_type, :user                     # Defaults to: :auto
-set :rvm_ruby_version, '2.0.0-p353@petynka'      # Defaults to: 'default'
-set :rvm_custom_path, '/home/igneus/.rvm'  # only needed if not detected
+set :rvm_ruby_version, '2.1.1@petynka'      # Defaults to: 'default'
+set :rvm_custom_path, '/home/deploy/.rvm'  # only needed if not detected
