@@ -11,6 +11,7 @@ set :linked_dirs, [
   'log',
   'tmp'
 ]
+set :linked_files, %w{config/app.yml config/initializers/secret_token.rb}
 
 namespace :deploy do
 
