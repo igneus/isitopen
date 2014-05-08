@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Isitopen::Application.config.secret_key_base = '5f3ba8cb86b114bda3a3d6706783c61911fe82d2177abf73998ae366b75f38d677d48170ed99f55071651b3f8a83d91f2bddd1b8fff3d29d026a1d5316c9ff8d'
+Isitopen::Application.config.secret_key_base = 'no, this is not a real secret key. create your own.'
