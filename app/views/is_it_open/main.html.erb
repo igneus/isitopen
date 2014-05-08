@@ -4,26 +4,60 @@
   <%= @open ? 'YES' : 'NO' %>
 </div>
 
+<div id="buttons">
+  <p>Click to let us know:</p>
 <% if @show_downvote then %>
   <%= link_to 'No, it is closed.', 
         {:controller => "votes", :action => "create", :open => false}, 
-        {:method => 'post'} %>
+        {:method => 'post', :class => 'no'} %>
 <% end %>
+
 <% if @show_upvote then %>
   <%= link_to 'It IS open.', 
         {:controller => "votes", :action => "create", :open => true}, 
-        {:method => 'post'} %>
+        {:method => 'post', :class => 'yes'} %>
 <% end %>
+</div>
 
-<p>
+<div id="explanation">
+<h2>Explanation</h2>
+
+<p class="<%= @is_opening_time ? 'yes' : 'no' %>">
   Opening time today: 
-  <%= @times_today.begin =%>:00 - <%= @times_today.end =%>:00
+  <%= link_to Isitopen.opening_time_source_url do %>
+    <strong><%= @times_today.begin =%>:00 - <%= @times_today.end =%>:00</strong><% end %>
+
+  According to the opening time it
+  <% if @is_opening_time then %>
+    should be open.
+  <% else %>
+    is closed.
+  <% end %>
 </p>
 
-<% if @votes then %>
+<% if @is_opening_time then %>
+  <% if @last_vote_from_trusted_user %>
+    <p class="<%= @last_vote_from_trusted_user.open ? 'yes' : 'no' %>">
+      The most recent report from a trusted user states it is
+      <%= @last_vote_from_trusted_user.open ? 'open' : 'closed' %>.
+    </p>
+  <% end %>
+
+  <% if @downvotes %>
+    <p class="no">
+      We have some reports stating it is closed.
+      See the log of submitted votes below.
+    </p>
+  <% else %>
+    <p class="yes">We have no contrary reports.</p>
+  <% end %>
+<% end %>
+</div>
+
+<% if @votes_today then %>
   <h2>Votes</h2>
   <ul>
-  <% @votes.each do |v| %>
+  <% @votes_today.each do |v| %>
     <li class="<%= (v.user && (v.user.staff || v.user.trusted)) ? 'trusted' : '' %>">
       <span class="vote <%= v.open ? 'yes' : 'no' %>"><%= v.open ? 'YES' : 'NO' %></span>
       

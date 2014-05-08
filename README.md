@@ -11,6 +11,7 @@ Tell others when you find it closed.
 
 * rename config/app_secret.example.yml to config/app_secret.yml and fill in
   real secrets
+* set 'trusted' and 'staff' flags to users manually in the database
 
 ## Database creation
 

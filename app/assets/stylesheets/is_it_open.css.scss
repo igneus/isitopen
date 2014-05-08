@@ -36,3 +36,27 @@ ul {
         span.trusted { font-weight: bold; }
     }
 }
+
+#explanation {
+    p {
+        border-radius: 4px; padding: 1px 3px;
+        @include yesno-colourable;
+    }
+}
+
+#buttons {
+    text-align: center;
+
+    a {
+        display: inline-block; font-size: 2em;
+        width: 8em;
+        border: 1px dotted #666; border-radius: 5px; padding: 10px; 
+        margin: 0 10px;
+        text-decoration: none;
+
+        &:hover { 
+            color: black;
+            @include yesno-colourable; 
+        }
+    }
+}

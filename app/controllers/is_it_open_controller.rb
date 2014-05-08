@@ -9,18 +9,26 @@ class IsItOpenController < ApplicationController
     open_time = time_today(hour: @times_today.begin)
     close_time = time_today(hour: @times_today.end)
 
-    opening_time = (@now >= open_time && @now < close_time)
+    @is_opening_time = (@now >= open_time && @now < close_time)
 
-    downvotes = Vote.where(created_at: open_time..close_time, open: false)
+    @downvotes = Vote.where(created_at: open_time..close_time, open: false).order(created_at: :desc)
 
-    @show_downvote = opening_time && @open
-    @show_upvote = opening_time && (!@open || downvotes)
+    @show_downvote = @is_opening_time && @open
+    @show_upvote = @is_opening_time && (!@open || @downvotes)
 
     ## for testing:
     #@show_downvote = @show_upvote = true
-
     
-    @votes = Vote.where(created_at: open_time..close_time).order(created_at: :desc)
+    @votes_today = Vote.where(created_at: open_time..close_time).order(created_at: :desc)
+
+    @last_vote_from_trusted_user = @votes_today.find do |v| 
+      v.user && (v.user.staff || v.user.trusted)
+    end
+    @trusted_users_report_closed = (@last_vote_from_trusted_user.open == false)
+
+    if @open then
+      @open = @open && !@trusted_users_report_closed
+    end
   end
 
   private
