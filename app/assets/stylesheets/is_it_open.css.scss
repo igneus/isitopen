@@ -27,7 +27,12 @@ ul {
             @include yesno-colourable;
         }
 
-        .user { font-style: italic; }
+        .user { 
+            font-style: italic; 
+            a { 
+                text-decoration: none; 
+            }
+        }
 
         &.trusted {
             border-radius: 4px; padding: 1px;

@@ -68,7 +68,9 @@
       
       <span class="user">
         <% if v.user then %>
-          authenticated per <%= v.user.provider %>
+          <%= link_to 'about#authenticate' do %>
+            authenticated per <%= v.user.provider %>
+          <% end %>
         <% else %>
           anonymous
         <% end %>
