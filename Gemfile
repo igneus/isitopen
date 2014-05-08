@@ -20,18 +20,8 @@ gem 'omniauth-facebook', '1.4.0'
 
 gem "econfig", require: "econfig/rails"
 
+gem 'capistrano', group: :development
+
 group :development do
   gem 'rspec-rails'
 end
-
-# Use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.1.2'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano', group: :development
-
-# Use debugger
-# gem 'debugger', group: [:development, :test]
