@@ -1,9 +1,38 @@
+$yes-colour: #6f6;
+$no-colour: #f66;
+
+@mixin yesno-colourable {
+    &.yes { background-color: $yes-colour; }
+    &.no { background-color: $no-colour; }
+}
+
 .yesno-box {
     border: 1px dotted #ccc; border-radius: 10px;
     text-align: center;
     margin: 50px auto 50px auto; padding: 50px;
     font-size: 7em;
+    @include yesno-colourable;
+}
 
-    &.yes { background-color: #6f6; }
-    &.no { background-color: #f66; }
+ul {
+    padding-left: 0;
+    li { 
+        list-style: none; 
+        margin-bottom: 2px; 
+
+        .vote {
+            font-size: 80%;
+            display: inline-block;
+            border-radius: 4px; padding: 1px 3px;
+            @include yesno-colourable;
+        }
+
+        .user { font-style: italic; }
+
+        &.trusted {
+            border-radius: 4px; padding: 1px;
+            border: 1px dashed #ccc;
+        }
+        span.trusted { font-weight: bold; }
+    }
 }

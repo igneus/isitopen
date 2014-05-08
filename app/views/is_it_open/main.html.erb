@@ -19,3 +19,34 @@
   Opening time today: 
   <%= @times_today.begin =%>:00 - <%= @times_today.end =%>:00
 </p>
+
+<% if @votes then %>
+  <h2>Votes</h2>
+  <ul>
+  <% @votes.each do |v| %>
+    <li class="<%= (v.user && (v.user.staff || v.user.trusted)) ? 'trusted' : '' %>">
+      <span class="vote <%= v.open ? 'yes' : 'no' %>"><%= v.open ? 'YES' : 'NO' %></span>
+      
+      <%= v.created_at.strftime('%H:%M') %>
+      
+      <span class="user">
+        <% if v.user then %>
+          authenticated per <%= v.user.provider %>
+        <% else %>
+          anonymous
+        <% end %>
+      </span>
+
+      <% if v.user and (v.user.staff or v.user.trusted) then %>
+        <span class="trusted">
+          <% if v.user.staff then %>
+            staff member
+          <% elsif v.user.trusted then %>
+            trusted user
+          <% end %>
+        </span>
+      <% end %>
+    </li>
+  <% end %>
+  </ul>
+<% end %>
